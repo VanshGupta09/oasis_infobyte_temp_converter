@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temprature Converter</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0010ffa1;
+            color: white;
+        }
+
+        h1 {
+            font-size: 4rem;
+        }
+
+        .main {
+            /* border: 1px solid white; */
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            text-align: center;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .input-div {
+            display: inline-block;
+        }
+
+        .inp {
+            padding: 5px 10px;
+            margin: 10px;
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+            width: 100%;
+        }
+
+        label {
+            font-size: 22px;
+        }
+
+
+        @media (max-width: 1024px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .inp {
+                margin: 0;
+                padding: 0;
+            }
+
+            .input-div {
+                margin: 20px 0;
+            }
+        }
+
+        @media (max-width: 850px) {
+            body {
+                padding: 0;
+            }
+
+            .inp {
+                margin: 0;
+                padding: 0;
+            }
+
+            .input-div {
+                margin: 20px 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 0;
+            }
+
+            .container {
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .input-div {
+                margin: 20px 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1>Temprature Converture</h1>
+        <div class="container">
+            <div class="input-div">
+                <label>Celsius</label><br>
+                <input type="number" value="0" id="cel" class="inp">
+            </div>
+            <div class="input-div">
+                <label>Fahrenheit</label><br>
+                <input type="number" value="32" id="fah" class="inp">
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        var cel = document.getElementById('cel');
+        var fah = document.getElementById('fah');
+
+        cel.addEventListener('input', function () {
+            let c = this.value;
+            let f = (c * 9 / 5) + 32;
+            if (!Number.isInteger(f)) {
+                f = f.toFixed(4);
+            }
+            fah.value = f;
+        });
+        fah.addEventListener('input', function () {
+            let f = this.value;
+            let c = (f - 32) * 5 / 9;
+            if (!Number.isInteger(c)) {
+                c = c.toFixed(4);
+            }
+            cel.value = c;
+        });
+    </script>
+</body>
+
+</html>
